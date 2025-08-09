@@ -1,11 +1,11 @@
 {
-  "name": "consent-o-matic",
-  "version": "1.1.5",
-  "description": "A browser extension that tries to fill out GDPR consent popups for you",
+  "name": "extension-consent-autodeny",
+  "version": "1.0.0",
+  "description": "A browser extension that tries to auto-deny GDPR consent popups for you",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cavi-au/Consent-O-Matic"
+    "url": "https://github.com/AgregoreWeb/extension-consent-autodeny"
   },
   "scripts": {
     "build-firefox": "webpack --env target=firefox",

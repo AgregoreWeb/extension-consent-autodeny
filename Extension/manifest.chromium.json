@@ -1,8 +1,8 @@
 {
-	"name": "Consent-O-Matic",
-	"description": "Automatic handling of GDPR consent forms",
-	"author": "CAVI - Aarhus University",
-	"homepage_url": "https://github.com/cavi-au/Consent-O-Matic",
+	"name": "Consent Autoblock",
+	"description": "Automatic blocking of GDPR consent forms",
+	"author": "CAVI - Aarhus University, forked by Agregore Team",
+	"homepage_url": "https://github.com/AgregoreWeb/extension-consent-autodeny",
 	"version": "REPLACED_BY_BUILD_SCRIPT",
 	"manifest_version": 3,
 	"permissions": [
@@ -13,10 +13,6 @@
 	"host_permissions": [
 		"<all_urls>"
 	],
-	"action": {
-		"default_title": "Consent-O-Matic",
-		"default_popup": "popup.html"
-	},
 	"background": {
 		"service_worker": "service.js"
 	},

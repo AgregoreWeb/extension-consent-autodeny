@@ -24,7 +24,7 @@ export default class GDPRConfig {
 
     static getConsentValues() {
         return new Promise((resolve, reject) => {
-            chrome.storage.sync.get({
+            chrome.storage.local.get({
                 consentValues: GDPRConfig.defaultValues
             }, (result) => {
                 resolve(Object.assign({}, GDPRConfig.defaultValues, result.consentValues));
@@ -34,7 +34,7 @@ export default class GDPRConfig {
     
     static getDebugValues() {
         return new Promise((resolve, reject) => {
-            chrome.storage.sync.get({
+            chrome.storage.local.get({
                 debugFlags: {}
             }, (result) => {
                 resolve(Object.assign({}, GDPRConfig.defaultDebugFlags, result.debugFlags));
@@ -44,7 +44,7 @@ export default class GDPRConfig {
 
     static getGeneralSettings() {
         return new Promise((resolve, reject) => {
-            chrome.storage.sync.get({
+            chrome.storage.local.get({
                 generalSettings: {}
             }, (result) => {
                 resolve(Object.assign({}, GDPRConfig.defaultSettings, result.generalSettings));
@@ -74,7 +74,7 @@ export default class GDPRConfig {
 
     static getRuleLists() {
         return new Promise((resolve, reject) => {
-            chrome.storage.sync.get({
+            chrome.storage.local.get({
                 ruleLists: GDPRConfig.defaultRuleLists
             }, (result) => {
                 resolve(result.ruleLists);
@@ -84,7 +84,7 @@ export default class GDPRConfig {
 
     static setRuleLists(lists) {
         return new Promise((resolve, reject) => {
-            chrome.storage.sync.set({
+            chrome.storage.local.set({
                 ruleLists: lists
             }, () => {
                 resolve();
@@ -117,7 +117,7 @@ export default class GDPRConfig {
 
     static isActive(url) {
         return new Promise((resolve, reject)=>{
-            chrome.storage.sync.get({
+            chrome.storage.local.get({
                 disabledPages: {}
             }, ({disabledPages: disabledPages}) => {
                 resolve(disabledPages[url] == null);
@@ -127,7 +127,7 @@ export default class GDPRConfig {
 
     static setPageActive(url, active) {
         return new Promise((resolve, reject)=>{
-            chrome.storage.sync.get({
+            chrome.storage.local.get({
                 disabledPages: {}
             }, ({disabledPages: disabledPages}) => {
                 if(active) {
@@ -135,7 +135,7 @@ export default class GDPRConfig {
                 } else {
                     disabledPages[url] = true;
                 }
-                chrome.storage.sync.set({
+                chrome.storage.local.set({
                     disabledPages: disabledPages
                 }, ()=>{
                     resolve();
@@ -263,7 +263,7 @@ export default class GDPRConfig {
         return new Promise((resolve, reject)=>{
             consentValues = Object.assign({}, GDPRConfig.defaultValues, consentValues);
 
-            chrome.storage.sync.set({
+            chrome.storage.local.set({
                 consentValues: consentValues
             }, () => {
                 resolve();
@@ -273,7 +273,7 @@ export default class GDPRConfig {
     
     static setDebugValues(newDebugValues) {
         return new Promise((resolve, reject)=>{
-            chrome.storage.sync.set({
+            chrome.storage.local.set({
                 debugFlags: newDebugValues
             }, () => {
                 resolve();
@@ -283,7 +283,7 @@ export default class GDPRConfig {
 
     static setGeneralSettings(newGeneralSettings) {
         return new Promise((resolve, reject)=>{
-            chrome.storage.sync.set({
+            chrome.storage.local.set({
                 generalSettings: newGeneralSettings
             }, () => {
                 resolve();

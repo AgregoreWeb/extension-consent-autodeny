@@ -1,53 +1,13 @@
-# Consent-O-Matic
+# Consent Blocker
 
-* [Introduction](#introduction)
-    * [Further reading](#further-reading)
-    * [Compatible CMPs](#compatible-cmps)
-    * [Permissions](#permissions)
-* [Installation](#installation)
-* [Extending Consent-O-Matic](#extending-consent-o-matic)
-    * [Basic Structure](#basic-structure)
-        * [Detectors](#detectors)
-        * [Methods](#methods)
-    * [DOM Selection](#dom-selection)
-    * [Actions](#actions)
-        * [Click](#click)
-        * [List](#list)
-        * [Consent](#consent)
-        * [Slide](#slide)
-        * [If Css](#if-css)
-        * [Wait For Css](#wait-for-css)
-        * [For Each](#for-each)
-        * [Wait](#wait)
-        * [Hide](#hide)
-        * [Close](#close)
-    * [Matchers](#matchers)
-        * [Css](#css)
-        * [Checkbox](#checkbox)
-    * [Consent](#consent-1)
-    * [Consent Categories](#consent-categories)
-    * [Full example](#full-example)
+Stripped down from the [Consent-O-Matic extension](https://github.com/cavi-au/Consent-O-Matic) to work for the [//agregore.mauve.moe](Agregore Web Browser).
 
-# Introduction
+Changes:
+- Removed browser action
+- Replaced chrome "sync" storage with "local" storage
+- Stick with the defaults without prompting the user to config
 
-You like websites to respect your right to privacy, and your browser clears cookies when you close it.
-Consequently, you get the same cookie-consent box each and every time you visit the same websites. And you tire of submitting the same information over and over. If only there were a way to automate your way out of this pickle? Lucky for you, Consent-O-Matic exists.
-
-Consent-O-Matic is a browser extension that recognizes a great deal of those CMP (Consent Management Provider) pop-ups that we've all grown to both love and hate. But since you've told it your cookie preferences upon installation, it will autofill those forms for you when it encounters them—and let you know that it did so, with a satisfying little checkmark next to its icon. Nice.
-
-And since it's an open project by the Centre for Advanced Visualisation and Interaction (CAVI) at Aarhus University, regular people can contribute by adding new rules, updating old rules, or even adding to the documentation (like these very paragraphs you're reading now, written by someone who just happened to discover the project and wanted to help) to make the extension even easier for others to use.
-
-## Further reading
-
-Paper: [Dark Patterns After the GDPR](https://doi.org/10.1145/3313831.3376321)
-
-PDF: [Dark Patterns After the GDPR](https://arxiv.org/pdf/2001.02479.pdf)
-
-Press: [Virksomheder narrer brugerne til mere dataovervågning (PROSA, March 2020, in Danish)](https://www.prosa.dk/artikel/virksomheder-narrer-brugerne-til-mere-dataovervaagning/)<sup>[\[Internet Archive\]](https://web.archive.org/web/20200511044414/https://www.prosa.dk/artikel/virksomheder-narrer-brugerne-til-mere-dataovervaagning/)</sup>
-
-## Compatible CMPs
-
-Consent-O-Matic currently works with these CMPs:
+## Blocked consent popup providers
 
 * Autodesk
 * begadi.com
@@ -88,47 +48,14 @@ Consent-O-Matic currently works with these CMPs:
 * Webedia
 * wordpressgdpr
 
-## Permissions
-
-Consent-O-Matic uses the following set of permissions in the browser when installed:
-* Access to read all pages - It searches each page you visit for consent-related popups that it knows how to handle
-* Information about tab URLs - You can turn the extension on/off on a page-by-page basis by clicking the icon. To check if it is enabled it needs to know the address of the page you are visiting
-* Storage - Your preferences and settings are stored directly in your browser
-
-The extension only communicates with the net by itself in two situations:
-* When fetching and updating rule lists
-* When you report a website as not working through the extension icon menu
-
-# Installation
-
-We highly recommend installing directly through the official extension store of your browser:
-* [Chrome](https://chrome.google.com/webstore/detail/consent-o-matic/mdjildafknihdffpkfmmpnpoiajfjnjd) (and other Chromium-based browsers)
-* [Firefox](https://addons.mozilla.org/addon/consent-o-matic/) (Desktop / Mobile)
-* [Safari](https://apps.apple.com/gb/app/consent-o-matic/id1606897889) (MacOS / iOS / iPadOS / visionOS)
-* [Edge](https://microsoftedge.microsoft.com/addons/detail/eflcfflijdiekjkegjghbchoncjhfkda) (Windows / MacOS)
-
-
-Installing through the official channels will automatically keep you up-to-date with new versions when they are released.
-
-## Installing from Archived Release
-As an alternative to extension stores you can manually download and extract one of the published versions from the [Releases](https://github.com/cavi-au/Consent-O-Matic/releases) page on Github.
-<br/>If you do that you have to use the developer feature of the browser to [Load Unpacked](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked) (Chrome) or [Load Temporary Addon](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension#installing) (Firefox) and point it at the manifest.json in the unpacked zip-directory.
-
 ## Building from Source
-Lastly, if you intend to review or make changes to the code, you can build and install directly from the source code:
+
 ```
-git clone https://github.com/cavi-au/Consent-O-Matic.git
-cd Consent-O-Matic
+git clone git@github.com:AgregoreWeb/extension-consent-autodeny.git
+cd extension-consent-autodeny
 npm install
 ```
-and then run one of ```npm run build-firefox``` or ```npm run build-chromium``` or ```npm run build-safari```
-
-For Firefox or Chromium you can now proceed as above for installing release archives but point the browser at the `build` folder or a folder where you extracted the zip from build/dist/. Safari requires loading the XCode project to further build an app.
-
-We do not recommend installing from source.
-
-
-
+and then run ```npm run build-chromium```
 
 # Extending Consent-O-Matic
 

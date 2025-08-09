@@ -80,7 +80,7 @@ module.exports = env=>({
     }]}),
     new ZipPlugin({
       path: 'dist/',
-      filename: PACKAGE.name+"-v"+PACKAGE.version+"-unpacked-release-"+env.target+".zip",
+      filename: PACKAGE.name+"-v"+PACKAGE.version+".zip",
       exclude: [/^dist/]
     })
   ]
